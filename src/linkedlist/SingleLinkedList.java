@@ -2,9 +2,7 @@ package linkedlist;
 
 // TODO
 /*
-4. 원하는 인덱스 데이터 제거
-5. 원하는 인덱스에 데이터 삽입
-6. 마지막 인덱스에 데이터 삽입 → 마지막 위치를 따로 계산해야하기 때문에 만들어야 함.
+
 7. 마지막 인덱스 데이터 삭제
 * */
 public class SingleLinkedList {
@@ -15,7 +13,17 @@ public class SingleLinkedList {
         this.head = null;
         this.size = 0;
     }
+    // 6. 마지막 인덱스에 데이터 삽입 → 마지막 위치를 따로 계산해야하기 때문에 만들어야 함.
+    public void insertLast(int data) {
+        insertAt(size, data);
+    }
 
+    // 마지ㅣ막 인덱스 데이터 삭제
+    public void deleteLast() {
+        deleteAt(size - 1);
+    }
+
+    // 원하는 인덱스에 데이터 삽입
     public void insertAt(int index, int data) {
         if (index < 0 || index > this.size) {
             throw new IndexOutOfBoundsException("범위를 벗어났습니다");
@@ -35,15 +43,28 @@ public class SingleLinkedList {
         currentNode.next = newNode;
         size++;
     }
-    public void deleteAt(int index) {
+    // 4. 원하는 인덱스 데이터 제거
+    public Node deleteAt(int index) {
         if (index < 0 || index >= this.size) {
             throw new IndexOutOfBoundsException("범위를 벗어났습니다");
         }
-
-
+        if (index == 0) {
+            Node deletedNode = head;
+            head = head.next;
+            size--;
+            return deletedNode;
+        }
+        Node currentNode = head;
+        for (int i = 0; i < index - 1; i++) {
+            currentNode = currentNode.next;
+        }
+        Node deletedNode = currentNode.next;
+        currentNode.next = currentNode.next.next;
+        size--;
+        return deletedNode;
     }
     // 3. 원하는 인덱스 읽기
-    public int getData(int index) {
+    public int getNodeAt(int index) {
         if (index < 0 || index >= this.size) {
             throw new IndexOutOfBoundsException("범위를 벗어났습니다");
         }
@@ -61,6 +82,7 @@ public class SingleLinkedList {
             System.out.print(currentNode.data + " ");
             currentNode = currentNode.next;
         }
+        System.out.println();
     }
     // 2. 모든 데이터 제거
     public void clear() {
