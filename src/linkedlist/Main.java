@@ -2,7 +2,7 @@ package linkedlist;
 
 public class Main {
     public static void main(String[] args) {
-        SingleLinkedList list = new SingleLinkedList();
+        SingleLinkedList2 list = new SingleLinkedList2();
 
         list.insertAt(0, 0);
         list.insertAt(1, 1);

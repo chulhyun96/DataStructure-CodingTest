@@ -13,6 +13,7 @@ public class SingleLinkedList {
         this.head = null;
         this.size = 0;
     }
+
     // 6. 마지막 인덱스에 데이터 삽입 → 마지막 위치를 따로 계산해야하기 때문에 만들어야 함.
     public void insertLast(int data) {
         insertAt(size, data);
