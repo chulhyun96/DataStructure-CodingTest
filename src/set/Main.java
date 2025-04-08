@@ -29,7 +29,8 @@ public class Main {
         nodes.add(new Node(3));
         nodes.add(new Node(4));
         nodes.add(new Node(5));
-        System.out.println("nodes = " + nodes);
+        System.out.println("nodes = " + nodes);System.out.println("nodes = " + nodes);
+
 
     }
 }
